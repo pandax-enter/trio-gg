@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Food Review Authenticator",
+  "version": "1.0",
+  "description": "Analyzes Google Maps reviews for authenticity using AI",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": [
+    "https://www.google.com/maps/*",
+    "https://*.amazonaws.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Review Analyzer"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/maps/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [{
+    "resources": ["inject.js"],
+    "matches": ["https://www.google.com/*"]
+  }]
+}
